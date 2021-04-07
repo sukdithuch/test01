@@ -1,12 +1,17 @@
-import React from "react";
+import React, {Component} from "react";
+import {Route} from "react-router-dom";
+import Home from "./components/Home";
 
-function App() {
-  return (
-    <div>
-      <h1>Hello</h1>
-      <h2>Hi5</h2>
-    </div> 
-  );
+
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <Route exact path="/" component={Home} />
+      </div>
+    );
+  }
 }
 
 export default App;
