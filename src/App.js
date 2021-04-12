@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./Views/Home";
 import About from "./Views/About";
 import CounterExample from "./Views/CounterExample";
-import User from "./Views/User";
+// import User from "./Views/User";
 
 
 function App() {
@@ -23,9 +23,9 @@ function App() {
             <Route path="/counter-example">
               <CounterExample />
             </Route>
-            <Route path="/user/:userInput">
+            {/* <Route path="/user/:userInput">
               <User />
-            </Route>
+            </Route> */}
           </Switch>
 
         </BrowserRouter>
