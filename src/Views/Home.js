@@ -9,12 +9,17 @@ function Home() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axois("https://api.github.com/users/example").then((response) => {
+    axois("https://mock-github-api.herokuapp.com/mock-github-api/example").then((response) => {
       setData(response.data);
     });
   }, []);
 
   const setData = ({ login, avatar_url }) => {
+
+    // console.log("ttt", login);
+    // console.log("ddd", avatar_url);
+    
+
     setUserName(login);
     setAvatar(avatar_url);
   };
@@ -24,22 +29,30 @@ function Home() {
   };
 
   const handleSubmit = () => {
-    axois(`https://api.github.com/users/${userInput}`)
+    axois(`https://mock-github-api.herokuapp.com/mock-github-api/${userInput}`)
       .then((response) => {
+
+        setError(null);
+
+        // console.log("ccc", error);
+
+
+        // console.log("xxxx", response);
+        
         setData(response.data);
       })
       .catch((error) => {
-        if (error.response.data.message) {
-          setError(error.response.data.message);
+       // console.log(error);
+       //alert("error");
+      //  console.log("yyy", error);
+
+
+        if (error.response) {
+          setError("Not Found");
         } else {
           setData(error.response.data);
         }
       });
-    // if (response.data.message) {
-    //     setError(response.data.message);
-    //   } else {
-    //     setData(response.data);
-    //   }
   };
 
   return (
@@ -52,7 +65,7 @@ function Home() {
           <input
             name="submit"
             type="button"
-            value="submit"
+            value="search"
             onClick={handleSubmit}
           />
         </form>
